@@ -1,1 +1,73 @@
-{{message}}
+<header>
+	<h1>
+		{{title}}
+	</h1>
+
+
+</header>
+
+
+<div class="searchTerm">search {{selectedEndPoint.name}}: <input type="text" ng-model="queryStr"></div>
+<div>
+	<div class="end-points">
+
+		<div ng-repeat="point in endPoints" class="points" ng-click="selectEndPoint(point)">
+			<h2>{{point.name}}</h2>
+		</div>
+
+	</div>
+
+	<div class="end-points-details">
+		<div>  <button ng-click="selectOrder('all')">SEE ALL</button> <button ng-click="selectOrder('method')">ORDER BY METHOD</button> <button ng-click="selectOrder('dataType')">ORDER BY DATATYPE</button></div>
+
+		<div>
+			<h2>{{selectedEndPoint.name}}</h2>
+
+			<div class="repeated" ng-show="hasChildren($index,'method')" ng-show="hasChildren(this)" ng-if="selectedOrder === 'method' || selectedOrder === 'all'" ng-repeat="method in selectedEndPoint.methods " >
+				<h3 >{{method}}</h3>
+					<ul>
+						<li ng-if="url.method === method" ng-repeat="url in selectedEndPoint.urls | filter: searchFunc as results">
+							<span class="url-info">
+								<div>
+									<span class="url-title">URL:</span>
+									{{selectedEndPoint.baseUrl + url.url}}
+								</div>
+
+								<div>
+									<span class="url-title">DATATYPE:</span>
+									{{url.dataType.toUpperCase()}}
+								</div>
+								<div>
+									<span class="url-title" ng-if="url.desc">
+										<span class="url-title">DESCRIPTION:</span>
+									</span>{{url.desc}}
+								</div>
+							</span>
+						</li>
+					</ul>
+			</div>
+
+			<div class="repeated" ng-show="hasChildren($index,'type')" ng-if="selectedOrder === 'dataType' || selectedOrder === 'all'" ng-repeat="type in selectedEndPoint.dataTypes" >
+				<h3 >{{type}}</h3>
+
+				<ul>
+					<li ng-if="url.dataType === type" ng-repeat="url in selectedEndPoint.urls   | filter: searchFunc ">
+						<span class="url-info">
+							<div>
+								<span class="url-title">URL:</span>{{selectedEndPoint.baseUrl + url.url}}</div>
+
+							<div><span class="url-title">METHOD:</span>{{url.method}}</div>
+
+							<div><span class="url-title" ng-if="url.desc">DESCRIPTION:</span>{{url.desc}}</div>
+						</span>
+						
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+
+

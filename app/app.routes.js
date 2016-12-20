@@ -5,11 +5,13 @@ angular.module('app')
             .state('home',{
                 url:'/home',
                 templateUrl:'home/home.html',
-                controller:"HomeCtrl"
+                controller:"HomeCtrl",
+                css:'./home/home.css'
             })
             .state('about',{
                 url:'/about',
                 templateUrl:'about/about.html',
-                controller:"AboutCtrl"
+                controller:"AboutCtrl",
+                css:'./about.css'
             });
     });

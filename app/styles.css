@@ -1,0 +1,67 @@
+header{
+	text-align: center;
+}
+
+body{
+padding:10px 10px;
+}
+
+.end-points{
+
+	width:33%;
+	display: inline-block;
+
+}
+
+.end-points-details{
+	width:65%;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.points{
+	margin:10px 0;
+}
+
+.end-points-details li:nth-child(odd) .url-info{
+	background-color: aquamarine;
+}
+
+.end-points-details li{
+	margin: 10px;
+}
+
+.end-points-details li>span{
+	display: inline-block;
+	padding: 10px;
+}
+
+.url-title{
+	display: inline-block;
+	width: 140px;
+}
+
+.url-info{
+	border-bottom: 1px solid black
+}
+
+ul{
+	list-style:none;
+}
+
+button {
+	padding:10px;
+	color:brown;
+	font-size:20px;
+}
+
+.searchTerm{
+	font-size: 26px;
+}
+
+.points{
+
+	cursor: pointer;
+}
+
+input[type="text"] { font-size:24px; }
